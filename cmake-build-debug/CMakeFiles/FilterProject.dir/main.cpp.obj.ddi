@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\FilterProject.dir\\main.cpp.obj",
+            "outputs": [
+                "D:\\An III sem II\\PI\\FilterProject\\cmake-build-debug\\vc140.pdb",
+                "CMakeFiles\\FilterProject.dir\\main.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}

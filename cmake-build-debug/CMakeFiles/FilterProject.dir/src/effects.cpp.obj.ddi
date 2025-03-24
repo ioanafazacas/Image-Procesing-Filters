@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\FilterProject.dir\\src\\effects.cpp.obj",
+            "outputs": [
+                "D:\\An III sem II\\PI\\FilterProject\\cmake-build-debug\\vc140.pdb",
+                "CMakeFiles\\FilterProject.dir\\src\\effects.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}
