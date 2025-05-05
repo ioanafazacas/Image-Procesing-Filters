@@ -13,19 +13,25 @@ int main() {
 
     /* Mat sharpImg = mySharpening(image,1);
     Mat sharpOpenCv = sharpeningOpenCv(image,1);
-    Mat emboss = myEmboss(image,0);
-    Mat fisheye = myFisheye(image,-1);
-    Mat fisheyeC = fisheyeCircular(image,1.5);*/
+    Mat emboss = myEmboss(image,0);*/
+
     imshow("original",image);
     //imshow("sharppening",sharpImg);
     //imshow("openCV",sharpOpenCv);
     //imshow("emboss",emboss);
-    imshow("sepia",sepia(image));
-    imshow("negativ",negativ(image));
-    //imshow("fisheye",fisheye);
-    //imshow("fisheyeCircular",fisheyeC);
-    //imshow("tilt shift", tiltShift(image,0.8, 30,100));
-    //imshow("tilt shift2", tiltShift(image,1.2, 30,100));
+    //imshow("sepia",sepia(image));
+    //imshow("negativ",negativ(image));
+    /*imshow("fisheye2 1",myFisheye2(image,1));
+    imshow("fisheye2 1.5",myFisheye2(image,1.5));
+    imshow("fisheye2 3",myFisheye2(image,3));
+    imshow("fisheye 1",myFisheye(image,1));
+    imshow("fisheye 1.5",myFisheye(image,1.5));
+    imshow("fisheye 3",myFisheye(image,3));
+    imshow("fisheye2",myFisheye2(imageCity,3));
+    imshow("fisheye",myFisheye(imageCity,3));
+    imshow("tilt shift", tiltShift(image,0.8, 30,100));
+    imshow("tilt shift2", tiltShift(image,1.2, 30,100));
+     */
     //la toate functiile sa aplic si implementarea din openCV , iar la partea de testare sa le compar cele doua penru noise
     //pentru comparare folosesc PSNR, SSIM, and LPIPS
     //imshow("original city", imageCity2);

@@ -131,45 +131,35 @@ Mat negativ(Mat source){
 }
 
 Mat myFisheye(Mat source, float k){
-    Point origin = Point(source.cols/2,source.rows/2);
     Mat result = Mat::zeros(source.size(), source.type());
-    int newX, newY;
-    float xn, yn, x2, y2;
+    float xn, yn;
     double r;
-    /*
-    for(int i=0; i<source.rows; i++){
-        for(int j=0; j<source.cols; j++){
-            x=j-origin.x;
-            y=i-origin.y;
-            r=sqrt(x*x+y*y);
-            newX= x*(1/(1+k*r*r))+origin.x;
-            newY= y*(1/(1+k*r*r))+origin.y;
-            if(IsInside(result,newY,newX)){
-                result.at<Vec3b>(newY,newX)= source.at<Vec3b>(i,j);
-            }
-        }
-    }*/
+    float scaleX = source.cols/2.0f;
+    float scaleY = source.rows/2.0f;
     //center
-    float cx=source.cols/2.0f;
-    float cy=source.rows/2.0f;
+    float originX=source.cols/2.0f;
+    float originY=source.rows/2.0f;
 
     for(int y=0; y<source.rows; y++){
         for(int x=0; x<source.cols; x++){
-            xn=(float)(x-cx)/cx;
-            yn=(float)(y-cy)/cy;
+            //normalize x,y
+            xn=(float)(x-originX)/scaleX;
+            yn=(float)(y-originY)/scaleY;
             r=sqrt(xn*xn+yn*yn);
-            // Aplica distorsiunea fisheye
-            float rDistorted = (r == 0.0f) ? 0.0f : atan(r * k) / (r * k);
 
-            float xMapped = cx + xn * rDistorted * cx;
-            float yMapped = cy + yn * rDistorted * cy;
+            float theta= atan2(yn,xn);
 
-            // Interpolare nearest-neighbor (poți schimba cu biliniară pentru calitate mai bună)
-            int xSrc = round(xMapped);
-            int ySrc = round(yMapped);
+            //for the circular effect
+            float cornerScale = min(abs(1/sin(theta)), abs(1/cos(theta)));
+            if(r<1)cornerScale=1;
 
-            if (IsInside(result,ySrc,xSrc)) {
-                result.at<Vec3b>(y, x) = source.at<Vec3b>(ySrc, xSrc);
+            float r_distorted = pow(r, k) * cornerScale;
+
+            float srcX = originX + scaleX * r_distorted * cos(theta);
+            float srcY = originY + scaleY * r_distorted * sin(theta);
+
+            if (srcX >= 0 && srcX < source.cols && srcY >= 0 && srcY < source.rows) {
+                result.at<Vec3b>(y, x) = source.at<Vec3b>((int)srcY, (int)srcX);
             }
         }
     }
@@ -177,11 +167,13 @@ Mat myFisheye(Mat source, float k){
     return result;
 }
 
-Mat fisheyeCircular(Mat source, float k) {
+
+
+Mat myFisheye2(Mat source, float k) {
     int w = source.cols;
     int h = source.rows;
     Point2f center(w / 2.0f, h / 2.0f);
-    float maxRadius = std::min(w, h) / 2.0f;
+    float maxRadius = min(w, h) / 2.0f;
 
     Mat result = Mat::zeros(source.size(), source.type());
 
@@ -191,18 +183,17 @@ Mat fisheyeCircular(Mat source, float k) {
             float dy = y - center.y;
             float r = sqrt(dx * dx + dy * dy);
 
-            //if (r < maxRadius) {
-                float theta = atan2(dy, dx);
-                float r_norm = r / maxRadius;
-                float r_distorted = pow(r_norm, k) * maxRadius;
+            float theta = atan2(dy, dx);
+            float r_norm = r / maxRadius;
+            float r_distorted = pow(r_norm, k) * maxRadius;
 
-                float srcX = center.x + r_distorted * cos(theta);
-                float srcY = center.y + r_distorted * sin(theta);
+            float srcX = center.x + r_distorted * cos(theta);
+            float srcY = center.y + r_distorted * sin(theta);
 
-                if (srcX >= 0 && srcX < w && srcY >= 0 && srcY < h) {
-                    result.at<Vec3b>(y, x) = source.at<Vec3b>((int)srcY, (int)srcX);
-                }
-            //}
+            if (srcX >= 0 && srcX < w && srcY >= 0 && srcY < h) {
+                result.at<Vec3b>(y, x) = source.at<Vec3b>((int)srcY, (int)srcX);
+            }
+
         }
     }
 
@@ -210,16 +201,20 @@ Mat fisheyeCircular(Mat source, float k) {
 }
 
 Mat createGaussianKernel(float sigma){
-    Mat kernel = Mat(5,5,CV_64FC1);
+    int w= round(sigma * 6);
+    if(w%2==0)w=w+1;
+    printf("w = %d\n",w);
+    printf("w/2 = %d\n",w/2);
+    Mat kernel = Mat(w,w,CV_64FC1);
     double sum=0;
-    for(int x=-2; x<=2; x++){
-        for(int y=-2; y<=2; y++){
-            kernel.at<double>(x+2,y+2)=exp(-(float)(x*x+y*y)/(2*sigma*sigma))/(2*CV_PI*sigma*sigma);
-            sum = sum+kernel.at<double>(x+2,y+2);
+    for(int x=-w/2; x<=w/2; x++){
+        for(int y=-w/2; y<=w/2; y++){
+            kernel.at<double>(x+w/2,y+w/2)=exp(-(float)(x*x+y*y)/(2*sigma*sigma))/(2*CV_PI*sigma*sigma);
+            sum = sum+kernel.at<double>(x+w/2,y+w/2);
         }
     }
-    for(int x=0; x<5; x++){
-        for(int y=0; y<5; y++){
+    for(int x=0; x<w; x++){
+        for(int y=0; y<w; y++){
             kernel.at<double>(x,y)= kernel.at<double>(x,y)/sum;
             printf("%f ",kernel.at<double>(x,y));
         }
@@ -232,13 +227,15 @@ Mat createGaussianKernel(float sigma){
 Mat tiltShift(Mat source, float sigma, int low, int high){
     Mat effect = Mat::zeros(source.size(), source.type());
     Mat kernel = createGaussianKernel(sigma);
+    int w= round(sigma * 6);
+    if(w%2==0)w=w+1;
     for(int x=0; x<source.rows; x++){
         for(int y=0; y<source.cols; y++){
             Vec3d filterPixel= Vec3d (0,0,0);
-            for(int i=-2; i<=2; i++){
-                for(int j=-2; j<=2; j++){
+            for(int i=-w/2; i<=w/2; i++){
+                for(int j=-w/2; j<=w/2; j++){
                     if(IsInside(source,x+i,y+j)){
-                        double k= kernel.at<double>(i+2,j+2);
+                        double k= kernel.at<double>(i+w/2,j+w/2);
                         Vec3b pixel = source.at<Vec3b>(x+i,y+j);
                         filterPixel[0] = filterPixel[0] + pixel[0] * k;
                         filterPixel[1] = filterPixel[1] + pixel[1] * k;

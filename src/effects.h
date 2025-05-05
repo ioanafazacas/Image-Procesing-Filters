@@ -34,7 +34,8 @@ Mat negativ(Mat source);
 
 Mat myFisheye(Mat source, float k);
 
-Mat fisheyeCircular(Mat source, float k);
+Mat myFisheye2(Mat source, float k);
+
 
 Mat createGaussianKernel(float sigma);
 

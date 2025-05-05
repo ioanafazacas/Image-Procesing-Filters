@@ -28,7 +28,6 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/src/effects.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/src/effects.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/vc140.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/vc140.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FilterProject.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FilterProject.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FilterProject.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FilterProject.ilk" afterDir="false" />
@@ -75,7 +74,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/An III sem II/PI/Image_Processing_UTCN_Labs",
+    "last_opened_file_path": "D:/An III sem II/PI/FilterProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -109,7 +108,8 @@
       <workItem from="1745930272839" duration="8065000" />
       <workItem from="1745998517307" duration="4273000" />
       <workItem from="1746025032706" duration="5597000" />
-      <workItem from="1746088373836" duration="7705000" />
+      <workItem from="1746088373836" duration="10886000" />
+      <workItem from="1746433268118" duration="7474000" />
     </task>
     <servers />
   </component>
