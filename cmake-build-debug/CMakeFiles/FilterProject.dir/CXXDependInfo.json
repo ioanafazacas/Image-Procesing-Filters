@@ -1,0 +1,21 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "MSVC",
+	"compiler-id" : "MSVC",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "D:/An III sem II/PI/Image-Procesing-Filters-main/cmake-build-debug",
+	"dir-cur-src" : "D:/An III sem II/PI/Image-Procesing-Filters-main",
+	"dir-top-bld" : "D:/An III sem II/PI/Image-Procesing-Filters-main/cmake-build-debug",
+	"dir-top-src" : "D:/An III sem II/PI/Image-Procesing-Filters-main",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"D:\\Program Files\\OpenCV\\opencv\\build\\include"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "D:/An III sem II/PI/Image-Procesing-Filters-main/cmake-build-debug/CMakeFiles/FilterProject.dir"
+}
