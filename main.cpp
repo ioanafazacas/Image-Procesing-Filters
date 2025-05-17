@@ -11,38 +11,32 @@ int main() {
     Mat imageCity = imread("D:\\An III sem II\\PI\\FilterProject\\images\\city-lights.bmp",IMREAD_COLOR);
     Mat imageCity2 = imread("D:\\An III sem II\\PI\\FilterProject\\images\\city2.bmp",IMREAD_COLOR);
 
-    /* Mat sharpImg = mySharpening(image,1);
-    Mat sharpOpenCv = sharpeningOpenCv(image,1);
-    Mat emboss = myEmboss(image,0);*/
 
     imshow("original",image);
-    //imshow("sharppening",sharpImg);
-    //imshow("openCV",sharpOpenCv);
-    //imshow("emboss",emboss);
-    //imshow("sepia",sepia(image));
-    //imshow("negativ",negativ(image));
-    /*imshow("fisheye2 1",myFisheye2(image,1));
+    imshow("sharppening",mySharpening(image,1));
+    //imshow("openCV",sharpeningOpenCv(image,1));
+    imshow("emboss",myEmboss(image,0));
+    imshow("sepia",sepia(image));
+    imshow("negativ",negativ(image));
+    //imshow("fisheye2 1",myFisheye2(image,1));
     imshow("fisheye2 1.5",myFisheye2(image,1.5));
     imshow("fisheye2 3",myFisheye2(image,3));
-    imshow("fisheye 1",myFisheye(image,1));
+    //imshow("fisheye 1",myFisheye(image,1));
     imshow("fisheye 1.5",myFisheye(image,1.5));
     imshow("fisheye 3",myFisheye(image,3));
-    imshow("fisheye2",myFisheye2(imageCity,3));
-    imshow("fisheye",myFisheye(imageCity,3));
+    //imshow("fisheye2",myFisheye2(imageCity,3));
+    //imshow("fisheye",myFisheye(imageCity,3));
     imshow("tilt shift", tiltShift(image,0.8, 30,100));
-    imshow("tilt shift2", tiltShift(image,1.2, 30,100));
-     */
+    //imshow("tilt shift2", tiltShift(image,1.2, 30,100));
+
     //la toate functiile sa aplic si implementarea din openCV , iar la partea de testare sa le compar cele doua penru noise
     //pentru comparare folosesc PSNR, SSIM, and LPIPS
-    //imshow("original city", imageCity2);
-    //imshow("tilt shift",tiltShift(imageCity2,1.2, 30,100));
-    //imshow("bokeh",bokehWithLights(imageCity,21,50));
-    //imshow("bokeh circular",bokehLightEffect(imageCity,180,25));
-    //imshow("bokeh 2",bokehEffect(imageCity2,10));
-    //labels bfsLabels = BFS_labeling(imageCity2);
-    //Mat result_bfs = color_labels(bfsLabels);
-    //imshow("BFS", result_bfs);
-    //printf("%d",bfsLabels.no_labels);
+    imshow("original city", imageCity2);
+    //imshow("tilt shift",tiltShift(imageCity,1.2, 30,100));
+
+    imshow("bokeh 2",bokehEffect(imageCity2,10));
+    imshow("bokeh",bokehCerc(imageCity2));
+
     waitKey(0);
     return 0;
 }

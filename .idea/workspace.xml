@@ -28,6 +28,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/src/effects.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/src/effects.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/vc140.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/vc140.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FilterProject.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FilterProject.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FilterProject.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FilterProject.ilk" afterDir="false" />
@@ -109,7 +110,15 @@
       <workItem from="1745998517307" duration="4273000" />
       <workItem from="1746025032706" duration="5597000" />
       <workItem from="1746088373836" duration="10886000" />
-      <workItem from="1746433268118" duration="7474000" />
+      <workItem from="1746433268118" duration="10011000" />
+      <workItem from="1746512676193" duration="13415000" />
+      <workItem from="1746536608655" duration="672000" />
+      <workItem from="1746554082346" duration="25000" />
+      <workItem from="1746554119784" duration="107000" />
+      <workItem from="1746554339837" duration="60000" />
+      <workItem from="1746554451679" duration="299000" />
+      <workItem from="1746555009990" duration="57000" />
+      <workItem from="1747505271386" duration="1189000" />
     </task>
     <servers />
   </component>

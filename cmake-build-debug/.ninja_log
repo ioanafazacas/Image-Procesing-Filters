@@ -1,91 +1,56 @@
 # ninja log v6
-61	1111	7681419142190143	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
-48	1113	7681419142053806	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
-1113	1202	7681419152708725	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-1113	1202	7681419152708725	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-1113	1202	7681419152708725	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-1113	1202	7681419152708725	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-1205	6070	7681419153638871	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
-893	5691	7681394908663916	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
-4884	5208	7681401016664890	FilterProject.exe	5a7d68d8c404300b
-45	997	7681419357833736	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
-998	1053	7681419367362721	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-998	1053	7681419367362721	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-998	1053	7681419367362721	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-998	1053	7681419367362721	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-1056	6215	7681419367947138	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
-6215	6753	7681419419539394	FilterProject.exe	5a7d68d8c404300b
-48	668	7681420670169138	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
-668	720	7681420676379801	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-668	720	7681420676379801	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-668	720	7681420676379801	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-668	720	7681420676379801	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-723	5117	7681420676928914	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
-5118	5487	7681420720863048	FilterProject.exe	5a7d68d8c404300b
-41	842	7681421920639237	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
-53	847	7681421920755186	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
-847	901	7681421928690257	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-847	901	7681421928690257	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-847	901	7681421928690257	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-847	901	7681421928690257	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-904	5808	7681421929268680	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
-910	5969	7681421929329394	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
-5969	6572	7681421979910633	FilterProject.exe	5a7d68d8c404300b
-51	760	7681422480512157	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
-761	822	7681422487617818	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-761	822	7681422487617818	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-761	822	7681422487617818	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-761	822	7681422487617818	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-826	5341	7681422488262586	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
-5342	5629	7681422533423272	FilterProject.exe	5a7d68d8c404300b
-44	738	7681424354336650	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
-738	797	7681424361277944	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-738	797	7681424361277944	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-738	797	7681424361277944	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-738	797	7681424361277944	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-800	5569	7681424361896137	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
-5570	5964	7681424409588317	FilterProject.exe	5a7d68d8c404300b
-46	798	7681425148141672	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
-799	855	7681425155676494	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-799	855	7681425155676494	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-799	855	7681425155676494	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-799	855	7681425155676494	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-858	5235	7681425156267380	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
-5235	5600	7681425200032679	FilterProject.exe	5a7d68d8c404300b
-60	939	7681427228357069	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
-940	1027	7681427237153505	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-940	1027	7681427237153505	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-940	1027	7681427237153505	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-940	1027	7681427237153505	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-1030	6920	7681427238060217	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
-6921	7537	7681427296959038	FilterProject.exe	5a7d68d8c404300b
-50	763	7681427906607224	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
-764	823	7681427913746246	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-764	823	7681427913746246	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-764	823	7681427913746246	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-764	823	7681427913746246	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-825	5231	7681427914369164	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
-5231	5549	7681427958428236	FilterProject.exe	5a7d68d8c404300b
-48	838	7681429585694507	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
-56	840	7681429585773413	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
-840	907	7681429593617752	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-840	907	7681429593617752	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-840	907	7681429593617752	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-840	907	7681429593617752	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-921	5837	7681429594430489	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
-56	1005	7681429877342428	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
-1006	1069	7681429886844300	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-1006	1069	7681429886844300	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-1006	1069	7681429886844300	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-1006	1069	7681429886844300	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-1072	5549	7681429887509855	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
-5549	5920	7681429932267267	FilterProject.exe	5a7d68d8c404300b
-45	732	7681433811409483	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
-55	736	7681433811511239	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
-736	804	7681433818319614	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
-736	804	7681433818319614	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
-736	804	7681433818319614	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
-736	804	7681433818319614	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
-806	5877	7681433819029118	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
-814	5926	7681433819096378	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
-5926	6500	7681433870230301	FilterProject.exe	5a7d68d8c404300b
+43	613	7682205227549236	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
+36	920	7682218284478943	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
+921	993	7682218293322234	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
+921	993	7682218293322234	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
+921	993	7682218293322234	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
+921	993	7682218293322234	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
+996	5530	7682218294080615	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
+660	4551	7682205233716078	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
+5530	5925	7682218339418432	FilterProject.exe	5a7d68d8c404300b
+46	651	7682218686175064	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
+651	700	7682218692232299	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
+651	700	7682218692232299	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
+651	700	7682218692232299	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
+651	700	7682218692232299	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
+703	4404	7682218692751544	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
+4405	4698	7682218729767652	FilterProject.exe	5a7d68d8c404300b
+36	670	7682222703054682	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
+670	720	7682222709387782	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
+670	720	7682222709387782	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
+670	720	7682222709387782	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
+670	720	7682222709387782	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
+722	4898	7682222709904110	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
+4898	5445	7682222751660865	FilterProject.exe	5a7d68d8c404300b
+103	1364	7682312819835496	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
+122	1368	7682312820015925	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
+1368	1534	7682312832481269	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
+1368	1534	7682312832481269	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
+1368	1534	7682312832481269	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
+1368	1534	7682312832481269	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
+1554	7247	7682312834342037	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
+1563	7292	7682312834434546	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
+7292	7901	7682312891724414	FilterProject.exe	5a7d68d8c404300b
+51	952	7682314543077043	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
+953	1037	7682314552105054	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
+953	1037	7682314552105054	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
+953	1037	7682314552105054	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
+953	1037	7682314552105054	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
+1039	5734	7682314552963622	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
+5734	6080	7682314599909671	FilterProject.exe	5a7d68d8c404300b
+45	776	7682314810452016	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
+777	849	7682314817760613	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
+777	849	7682314817760613	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
+777	849	7682314817760613	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
+777	849	7682314817760613	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
+853	5554	7682314818534545	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
+5554	5847	7682314865538965	FilterProject.exe	5a7d68d8c404300b
+122	1374	7692088069534706	CMakeFiles/FilterProject.dir/main.cpp.obj.ddi	3e2971c68f5a2418
+138	1377	7692088069695221	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.ddi	7c9785d9300b8b16
+1377	1490	7692088082087704	CMakeFiles/FilterProject.dir/CXX.dd	951203e8aa8f2ae6
+1377	1490	7692088082087704	D:/An III sem II/PI/FilterProject/cmake-build-debug/CMakeFiles/FilterProject.dir/CXXModules.json	951203e8aa8f2ae6
+1377	1490	7692088082087704	CMakeFiles/FilterProject.dir/main.cpp.obj.modmap	951203e8aa8f2ae6
+1377	1490	7692088082087704	CMakeFiles/FilterProject.dir/src/effects.cpp.obj.modmap	951203e8aa8f2ae6
+1495	6828	7692088083266549	CMakeFiles/FilterProject.dir/main.cpp.obj	3dcf6ee26ce1f555
+1506	6936	7692088083370368	CMakeFiles/FilterProject.dir/src/effects.cpp.obj	62c1fa70f4a62741
+6936	7708	7692088137675279	FilterProject.exe	5a7d68d8c404300b

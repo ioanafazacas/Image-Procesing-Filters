@@ -6,32 +6,6 @@
 using namespace std;
 using namespace cv;
 
-Mat bgr_2_grayscale(Mat source){
-    /*
-    * Create a function that will convert a color RGB image (CV_8UC3 type) to a grayscale image (CV_8UC1),
-    * and return the result image
-    * Inputs: source: the source matrix(BGR)
-    * Variables:
-    *  rows: number of rows of the source matrix
-    *  cols: number of cols of the source matrix
-    *  grayscale_image: The grayscale image that you will obtain and return
-    */
-    int rows, cols;
-    Mat grayscale_image;
-
-    //*****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-    grayscale_image = Mat(source.rows,source.cols,CV_8UC1);
-    for(int i=0; i<source.rows; i++){
-        for(int j=0; j<source.cols; j++){
-            grayscale_image.at<unsigned char>(i,j)=(source.at<Vec3b>(i,j)[0]+source.at<Vec3b>(i,j)[1]+
-                                                    source.at<Vec3b>(i,j)[2])/3;
-        }
-    }
-    //*****END OF YOUR CODE(DO NOT DELETE / MODIFY THIS LINE) *****
-
-    return grayscale_image;
-
-}
 
 bool IsInside(Mat img, int i, int j){
     if(i >= 0 && i < img.rows && j >= 0 && j < img.cols)
@@ -50,8 +24,8 @@ Mat mySharpening(Mat source, float laplacianBoostfactor){
     //Mat result = Mat(source.rows,source.cols, CV_8UC3);
     Mat result = Mat::zeros(source.size(), source.type());
     Mat kernel = (Mat_<float>(3,3)<< 0, -1, 0,
-                                                -1, 5*laplacianBoostfactor,-1,
-                                                0, -1, 0);
+            -1, 5*laplacianBoostfactor,-1,
+            0, -1, 0);
     for(int x=0; x<source.rows; x++){
         for(int y=0; y<source.cols; y++){
             Vec3f filterPixel= Vec3f(0,0,0);
@@ -77,8 +51,8 @@ Mat mySharpening(Mat source, float laplacianBoostfactor){
 Mat myEmboss(Mat source, int bias){
     Mat result = Mat::zeros(source.size(), source.type());
     Mat kernel = (Mat_<float>(3,3)<< -2, -1, 0,
-                                                -1, 1, 1,
-                                                0, 1, 2);
+            -1, 1, 1,
+            0, 1, 2);
     for(int x=0; x<source.rows; x++){
         for(int y=0; y<source.cols; y++){
             Vec3f filterPixel= Vec3f(0,0,0);
@@ -216,7 +190,7 @@ Mat createGaussianKernel(float sigma){
     for(int x=0; x<w; x++){
         for(int y=0; y<w; y++){
             kernel.at<double>(x,y)= kernel.at<double>(x,y)/sum;
-            printf("%f ",kernel.at<double>(x,y));
+            //printf("%f ",kernel.at<double>(x,y));
         }
         printf("\n");
     }
@@ -224,8 +198,8 @@ Mat createGaussianKernel(float sigma){
     return kernel;
 }
 
-Mat tiltShift(Mat source, float sigma, int low, int high){
-    Mat effect = Mat::zeros(source.size(), source.type());
+Mat myGaussianBlur(Mat source, float sigma){
+    Mat result = Mat::zeros(source.size(), source.type());
     Mat kernel = createGaussianKernel(sigma);
     int w= round(sigma * 6);
     if(w%2==0)w=w+1;
@@ -243,11 +217,17 @@ Mat tiltShift(Mat source, float sigma, int low, int high){
                     }
                 }
             }
-            effect.at<Vec3b>(x, y)[0] = cv::saturate_cast<uchar>(filterPixel[0]);
-            effect.at<Vec3b>(x, y)[1] = cv::saturate_cast<uchar>(filterPixel[1]);
-            effect.at<Vec3b>(x, y)[2] = cv::saturate_cast<uchar>(filterPixel[2]);
+            result.at<Vec3b>(x, y)[0] = cv::saturate_cast<uchar>(filterPixel[0]);
+            result.at<Vec3b>(x, y)[1] = cv::saturate_cast<uchar>(filterPixel[1]);
+            result.at<Vec3b>(x, y)[2] = cv::saturate_cast<uchar>(filterPixel[2]);
         }
     }
+    return result;
+}
+
+Mat tiltShift(Mat source, float sigma, int low, int high){
+    Mat effect = Mat::zeros(source.size(), source.type());
+    effect = myGaussianBlur(source,sigma);
 
     Mat mask = Mat(source.rows, source.cols, CV_8UC1);
     for(int i=0; i<source.rows; i++){
@@ -273,96 +253,7 @@ Mat maskEffect(Mat mask, Mat source, Mat effect){
     }
     return result;
 }
-//....................................................................................
-Mat addArtificialBokehLights(Mat img, int count = 50) {
-    RNG rng;
-    Mat overlay = img.clone();
 
-    for (int i = 0; i < count; ++i) {
-        // Coordonate aleatoare
-        int x = rng.uniform(0, img.cols);
-        int y = rng.uniform(0, img.rows);
-
-        // Culoare și mărime aleatorii
-        int radius = rng.uniform(5, 25);
-        Scalar color = Scalar(rng.uniform(180, 255), rng.uniform(180, 255), rng.uniform(180, 255));
-
-        // Desenează un cerc transparent (lumină blurată)
-        circle(overlay, Point(x, y), radius, color, -1, LINE_AA);
-    }
-
-    // Aplicați un blur ușor pentru estomparea luminilor
-    GaussianBlur(overlay, overlay, Size(21, 21), 0);
-
-    // Combinăm cu imaginea originală (alpha blending)
-    addWeighted(overlay, 0.3, img, 0.7, 0, img);
-
-    return img;
-}
-
-Mat bokehWithLights(Mat source, int blurStrength, int lightCount) {
-    // 1. Gaussian Blur pentru fundal
-    Mat blurred;
-    GaussianBlur(source, blurred, Size(blurStrength | 1, blurStrength | 1), 0);
-
-    // 2. Mască circulară
-    Mat mask = Mat::zeros(source.size(), CV_8UC1);
-    Point center(source.cols / 2, source.rows / 2);
-    int radius = std::min(source.cols, source.rows) / 4;
-    circle(mask, center, radius, Scalar(255), -1);
-
-    // 3. Combinație: zona clară + zona blurată
-    Mat result = Mat::zeros(source.size(), source.type());
-    source.copyTo(result, mask);
-    blurred.copyTo(result, 255 - mask);
-
-    // 4. Adaugă luminile artificiale în zona blurată
-    result = addArtificialBokehLights(result, lightCount);
-
-    return result;
-}
-
-Mat circularBokehKernel(int size) {
-    Mat kernel = Mat::zeros(size, size, CV_32F);
-    Point center = Point(size / 2, size / 2);
-    float radius = size / 2.0;
-
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
-            float dist = norm(Point(i, j) - center);
-            if (dist <= radius) {
-                kernel.at<float>(i, j) = 1.0;
-            }
-        }
-    }
-
-    // Normalizează kernelul
-    kernel /= sum(kernel)[0];
-    return kernel;
-}
-
-Mat bokehLightEffect(Mat img, int thresholdValue, int kernelSize) {
-    Mat gray, lightMask;
-    cvtColor(img, gray, COLOR_BGR2GRAY);
-
-    // 1. Detectează luminile (zonele albe intense)
-    threshold(gray, lightMask, thresholdValue, 255, THRESH_BINARY);
-
-    // 2. Kernel circular pentru bokeh
-    Mat bokehKernel = circularBokehKernel(kernelSize);
-
-    // 3. Aplica blur pe luminile extrase
-    Mat lightBlur, lightsOnly;
-    img.copyTo(lightsOnly, lightMask);  // extrage doar luminile
-    filter2D(lightsOnly, lightBlur, -1, bokehKernel);
-
-    // 4. Combină cu imaginea originală
-    Mat result = img.clone();
-    lightBlur.copyTo(result, lightMask);  // înlocuiește luminile cu versiunea blurată
-
-    return result;
-}
-//.....................................................................................................
 uchar ClampToByte(float value) {
     return static_cast<uchar>(std::min(255.f, std::max(0.f, value)));
 }
@@ -411,34 +302,80 @@ Mat bokehEffect(const Mat& input, int radius) {
 
     return output;
 }
-//.......................................................................................
 
-Mat bokehCerc(Mat source, int radius){
-    Mat result = Mat::zeros(source.size(), source.type());
-    for(int i=0; i<source.rows; i++){
-        for(int j=0; j<source.cols; j++){
-            Vec3b pixel = source.at<Vec3b>(i,j);
-            float brightness = (pixel[0]+pixel[1]+pixel[2])/3.0f;
-            if(brightness>180){
+Mat myAddWeighted(Mat src1, double alpha, Mat src2, double beta) {
 
+    Mat dst = Mat::zeros(src1.size(), src1.type());
+
+    for (int y = 0; y < src1.rows; ++y) {
+        for (int x = 0; x < src1.cols; ++x) {
+            Vec3b pixel1 = src1.at<Vec3b>(y, x);
+            Vec3b pixel2 = src2.at<Vec3b>(y, x);
+            Vec3b& pixelDst = dst.at<Vec3b>(y, x);
+
+            for (int c = 0; c < 3; ++c) {
+                float val = pixel1[c] * alpha + pixel2[c] * beta;
+                pixelDst[c] = saturate_cast<uchar>(val);
             }
         }
     }
-    return result;
+
+    return dst;
+}
+
+Mat bokehCerc(Mat source) {
+    Mat blurred;
+
+    // Obține zonele luminoase etichetate
+    labels light_labels = BFS_labeling(source);
+    Mat result = source.clone();
+    Mat result2 = source.clone();
+
+    // Pentru fiecare componentă etichetată se calculeaza centrul si raza
+    for (int lbl = 1; lbl <= light_labels.no_labels; lbl++) {
+        vector<Point> points;
+        for (int i = 0; i < source.rows; i++) {
+            for (int j = 0; j < source.cols; j++) {
+                if (light_labels.labels.at<int>(i,j) == lbl) {
+                    points.push_back(Point(j,i));
+                }
+            }
+        }
+
+        // Calculează centrul geometric al componentei
+        if (points.empty()) continue;
+
+        Point center(0,0);
+        for (auto& p : points) {
+            center.x += p.x;
+            center.y += p.y;
+        }
+        center.x = center.x / points.size();
+        center.y = center.y / points.size();
+
+        // Calculeaza raza aproximativa a unei componente
+        float maxRadius = 0.f;
+        for (const auto& p : points) {
+            float dist = norm(p - center);
+            if (dist > maxRadius) maxRadius = dist;
+        }
+        //printf("raza - %f\n", maxRadius);
+        if(maxRadius>15)maxRadius=15;
+        // Desenăm cercul blurat în imaginea rezultată
+        circle(result, center, maxRadius, light_labels.colors[lbl], -1, LINE_AA);
+        //contopim cele doua imagini
+        result2 = myAddWeighted(result, 0.75, source, 0.25);
+    }
+    //aplicam blurarea
+    blurred = myGaussianBlur(result2,1.2);
+    return blurred;
 }
 
 labels BFS_labeling(Mat source){
 
-    /*
-     * This method will implement the BFS labeling algorithm
-     * Hint:
-     *  Use the Point structure(or a similar one) to store the coordinates in a queue
-     *  You can use queue from C++ with its specific actions (push, pop, empty, front)
-     */
     Mat labels;
     int rows, cols, no_labels;
 
-    //*****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     no_labels=0;
     rows=source.rows;
     cols=source.cols;
@@ -454,7 +391,7 @@ labels BFS_labeling(Mat source){
                 queue<Point> Q;
                 labels.at<int>(i, j) = no_labels;
                 Q.push(Point(j, i));
-                Vec3b color=Vec3b(0,0,0);
+                Vec3i color=Vec3i(0,0,0);
                 int nrComponent=0;
                 while (!Q.empty()) {
                     Point q = Q.front();
@@ -477,51 +414,16 @@ labels BFS_labeling(Mat source){
                         }
                     }
                 }
-                printf("color - %d %d %d\n",color[0],color[1],color[2]);
-                color[0]=color[0]/nrComponent;
-                color[1]=color[1]/nrComponent;
-                color[2]=color[2]/nrComponent;
-                colors[no_labels]=color;
+                Vec3b avgColor;
+                if (nrComponent > 0) {
+                    avgColor[0] = color[0] / nrComponent;
+                    avgColor[1] = color[1] / nrComponent;
+                    avgColor[2] = color[2] / nrComponent;
+                    colors[no_labels] = avgColor;
+                }
             }
         }
     }
 
     return {labels, no_labels, colors};
-}
-
-Mat color_labels(labels labels_str){
-
-    /*
-     * This method will generate a number of no_labels colors and
-     * generate a color image containing each label displayed in a different color
-     */
-
-    int rows, cols, no_labels;
-    Mat labels, result;
-    Vec3b* colors;
-
-    //*****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-    srand(time(NULL));
-    no_labels=labels_str.no_labels;
-    rows = labels_str.labels.rows;
-    cols = labels_str.labels.cols;
-    labels = labels_str.labels;
-    result = Mat::zeros(rows,cols,CV_8UC3);
-    colors=(Vec3b*)calloc(no_labels+1,sizeof(Vec3b));
-    colors[0]= Vec3b(255,255,255);
-    for(int i=1; i<=no_labels; i++)
-    {
-        colors[i] = Vec3b(rand()%255,rand()%255,rand()%255);
-    }
-
-    for(int i=0; i<rows; i++){
-        for(int j=0; j<cols; j++){
-            result.at<Vec3b>(i,j)=labels_str.colors[labels.at<int>(i,j)];
-        }
-    }
-
-    //*****END OF YOUR CODE(DO NOT DELETE / MODIFY THIS LINE) *****
-
-    return result;
-
 }
