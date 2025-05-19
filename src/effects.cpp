@@ -13,12 +13,7 @@ bool IsInside(Mat img, int i, int j){
     return false;
 }
 
-Mat sharpeningOpenCv(Mat source, float laplacianBoostfactor){
-    Mat result = source.clone();
-    Mat kernel = (Mat_<double>(3,3)<<0, -1, 0, -1, 5*laplacianBoostfactor, -1, 0, -1, 0);
-    filter2D(source.clone(),result,source.depth(),kernel,Point(-1,-1));
-    return result ;
-}
+
 
 Mat mySharpening(Mat source, float laplacianBoostfactor){
     //Mat result = Mat(source.rows,source.cols, CV_8UC3);
@@ -367,7 +362,7 @@ Mat bokehCerc(Mat source) {
         result2 = myAddWeighted(result, 0.75, source, 0.25);
     }
     //aplicam blurarea
-    blurred = myGaussianBlur(result2,1.2);
+    blurred = myGaussianBlur(result2,1.8);
     return blurred;
 }
 

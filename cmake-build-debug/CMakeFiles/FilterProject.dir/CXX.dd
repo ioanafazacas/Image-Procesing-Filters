@@ -3,3 +3,5 @@ build CMakeFiles\FilterProject.dir\main.cpp.obj: dyndep
 
 build CMakeFiles\FilterProject.dir\src\effects.cpp.obj: dyndep
 
+build CMakeFiles\FilterProject.dir\src\test.cpp.obj: dyndep
+

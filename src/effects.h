@@ -23,8 +23,6 @@ const int np_dj[4] = { -1,-1, 0, 1};
 
 Mat mySharpening(Mat source, float laplacianBoostfactor);
 
-Mat sharpeningOpenCv(Mat source, float laplacianBoostfactor);
-
 Mat myEmboss(Mat source, int bias);
 
 Mat sepia(Mat source);

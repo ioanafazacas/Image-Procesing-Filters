@@ -11,6 +11,8 @@ add_executable(FilterProject
         main.cpp
         src/effects.cpp
         src/effects.h
+        src/test.cpp
+        src/test.h
 )
 
 target_link_libraries(FilterProject ${OpenCV_LIBS})
