@@ -24,26 +24,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15e3ec91-fd9b-422b-8de8-6e9d2f0391cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-8a264b863ffd0ee93726.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-65d44dfdc145a26c4d52.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2025-03-27T07-02-06-0586.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-FilterProject-Debug-c939a50cf37dc705f335.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/CXX.dd" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/CXX.dd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/src/effects.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/src/effects.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/vc140.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FilterProject.dir/vc140.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FilterProject.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FilterProject.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FilterProject.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FilterProject.ilk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FilterProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FilterProject.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/effects.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/effects.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/effects.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/effects.h" afterDir="false" />
@@ -130,7 +120,12 @@
       <workItem from="1746555009990" duration="57000" />
       <workItem from="1747505271386" duration="7108000" />
       <workItem from="1747643140820" duration="12965000" />
-      <workItem from="1747683972596" duration="6162000" />
+      <workItem from="1747683972596" duration="6247000" />
+      <workItem from="1747740265396" duration="2108000" />
+      <workItem from="1747890764562" duration="1236000" />
+      <workItem from="1748710383750" duration="7305000" />
+      <workItem from="1748807546242" duration="2978000" />
+      <workItem from="1748844971916" duration="10676000" />
     </task>
     <servers />
   </component>

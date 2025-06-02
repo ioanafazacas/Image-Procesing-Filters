@@ -159,8 +159,62 @@ Mat myFisheye2(Mat source, float k) {
             float srcX = center.x + r_distorted * cos(theta);
             float srcY = center.y + r_distorted * sin(theta);
 
-            if (srcX >= 0 && srcX < w && srcY >= 0 && srcY < h) {
+            if (srcX >= 0 && srcX < w-1 && srcY >= 0 && srcY < h-1) {
                 result.at<Vec3b>(y, x) = source.at<Vec3b>((int)srcY, (int)srcX);
+            }
+
+        }
+    }
+
+    return result;
+}
+
+Mat enhancedFisheye(Mat source, float k) {
+    int w = source.cols;
+    int h = source.rows;
+    Point2f center(w / 2.0f, h / 2.0f);
+    float maxRadius = min(w, h) / 2.0f;
+
+    Mat result = Mat::zeros(source.size(), source.type());
+
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            float dx = x - center.x;
+            float dy = y - center.y;
+            float r = sqrt(dx * dx + dy * dy);
+
+            float theta = atan2(dy, dx);
+            float r_norm = r / maxRadius;
+            //float r_distorted = r_norm*(1+k*r_norm*r_norm) * maxRadius;
+            float r_distorted = pow(r_norm, k) * maxRadius;
+
+            float srcX = center.x + r_distorted * cos(theta);
+            float srcY = center.y + r_distorted * sin(theta);
+
+            if (srcX >= 0 && srcX < w-1 && srcY >= 0 && srcY < h-1) {
+                // Interpolare biliniara
+                int x1 = (int)srcX;
+                int y1 = (int)srcY;
+                int x2 = x1 + 1;
+                int y2 = y1 + 1;
+
+                float dx = srcX - x1;
+                float dy = srcY - y1;
+
+                Vec3b p1 = source.at<Vec3b>(y1, x1);
+                Vec3b p2 = source.at<Vec3b>(y1, x2);
+                Vec3b p3 = source.at<Vec3b>(y2, x1);
+                Vec3b p4 = source.at<Vec3b>(y2, x2);
+
+                // Interpolare intre cei 4 pixeli vecini
+                Vec3b interpolated =
+                        p1 * (1-dx) * (1-dy) +  //stanga-sus
+                        p2 * dx * (1-dy) +      // dreapta-sus
+                        p3 * (1-dx) * dy +      // stânga-jos
+                        p4 * dx * dy;           // dreapta-jos
+
+                result.at<Vec3b>(y, x) = interpolated;
+                //result.at<Vec3b>(y, x) = source.at<Vec3b>((int)srcY, (int)srcX);
             }
 
         }
@@ -254,7 +308,6 @@ uchar ClampToByte(float value) {
 }
 
 Mat bokehEffect(const Mat& input, int radius) {
-    //CV_Assert(input.type() == CV_8UC3);
     Mat output = Mat::zeros(input.size(), input.type());
 
     int width = input.cols;
@@ -421,4 +474,128 @@ labels BFS_labeling(Mat source){
     }
 
     return {labels, no_labels, colors};
+}
+
+Mat newBokeh(Mat source, float intensity, int radius ) {
+    Mat result = source.clone();
+
+    // Creează kernel circular cu margini moi
+    int size = radius * 2 + 1;
+    Mat kernel(size, size, CV_32FC1, Scalar(0));
+    Point center(radius, radius);
+
+    for (int y = 0; y < size; ++y)
+        for (int x = 0; x < size; ++x) {
+            float dist = norm(Point(x, y) - center);
+            if (dist <= radius)
+                kernel.at<float>(y, x) = pow(1.0f - dist / radius, 2.0f);
+        }
+
+    normalize(kernel, kernel, 0, 1, NORM_MINMAX);
+
+    // Detectează zone luminoase
+    Mat gray;
+    cvtColor(source, gray, COLOR_BGR2GRAY);
+    threshold(gray, gray, 200, 255, THRESH_BINARY);
+
+    for (int y = radius; y < source.rows - radius; ++y) {
+        for (int x = radius; x < source.cols - radius; ++x) {
+            if (gray.at<uchar>(y, x) > 0) {
+                for (int dy = -radius; dy <= radius; ++dy) {
+                    for (int dx = -radius; dx <= radius; ++dx) {
+                        int nx = x + dx, ny = y + dy;
+                        float k = kernel.at<float>(dy + radius, dx + radius);
+                        if (nx >= 0 && nx < source.cols && ny >= 0 && ny < source.rows) {
+                            Vec3b& dst = result.at<Vec3b>(ny, nx);
+                            Vec3b src = source.at<Vec3b>(y, x);
+                            for (int c = 0; c < 3; ++c) {
+                                dst[c] = saturate_cast<uchar>((1 - k * intensity) * dst[c] + k * intensity * src[c]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Mat result2= source.clone();
+    Mat blurred = source.clone();
+    result2 = myAddWeighted(result, 0.75, source, 0.25);
+    blurred = myGaussianBlur(result2,1.8);
+
+    return blurred;
+}
+
+
+Mat bokehImproved(Mat source) {
+    Mat blurred;
+
+    // Obține zonele luminoase etichetate
+    labels light_labels = BFS_labeling(source);
+    Mat result = source.clone();
+    Mat result2 = source.clone();
+
+    // Pentru fiecare componentă etichetată se calculeaza centrul si raza
+    for (int lbl = 1; lbl <= light_labels.no_labels; lbl++) {
+        vector<Point> points;
+        for (int i = 0; i < source.rows; i++) {
+            for (int j = 0; j < source.cols; j++) {
+                if (light_labels.labels.at<int>(i,j) == lbl) {
+                    points.push_back(Point(j,i));
+                }
+            }
+        }
+
+        // Calculează centrul geometric al componentei
+        if (points.empty()) continue;
+
+        Point center(0,0);
+        for (auto& p : points) {
+            center.x += p.x;
+            center.y += p.y;
+        }
+        center.x = center.x / points.size();
+        center.y = center.y / points.size();
+
+        // Calculeaza raza aproximativa a unei componente
+        float maxRadius = 0.f;
+        for (const auto& p : points) {
+            float dist = norm(p - center);
+            if (dist > maxRadius) maxRadius = dist;
+        }
+        //printf("raza - %f\n", maxRadius);
+        if(maxRadius>15)maxRadius=15;
+        // Desenăm cercul blurat în imaginea rezultată
+        circle(result2, center, maxRadius, light_labels.colors[lbl], -1, LINE_AA);
+
+        //Desenarea cercului cu intensitate mare in centru si mai slaba la exterior
+        int size = maxRadius * 2 + 1;
+        Mat kernel(size, size, CV_32FC1, Scalar(0));
+        Point center2(maxRadius, maxRadius);
+
+        for (int y = 0; y < size; ++y)
+            for (int x = 0; x < size; ++x) {
+                float dist = norm(Point(x, y) - center2);
+                if (dist <= maxRadius)
+                    kernel.at<float>(y, x) = pow(1.0f - dist / maxRadius, 2.0f);
+            }
+        for (int dy = -maxRadius; dy <= maxRadius; ++dy) {
+            for (int dx = -maxRadius; dx <= maxRadius; ++dx) {
+                int nx = center.x + dx, ny = center.y + dy;
+                float k = kernel.at<float>(dy + maxRadius, dx + maxRadius);
+                if (nx >= 0 && nx < source.cols && ny >= 0 && ny < source.rows) {
+                    Vec3b& dst = result.at<Vec3b>(ny, nx);
+                    for (int c = 0; c < 3; ++c) {
+                        dst[c] = saturate_cast<uchar>((1 - k ) * dst[c] + k *  light_labels.colors[lbl][c]);
+                    }
+                }
+            }
+        }
+
+    }
+    Mat resultFinal;
+    //contopirea imaginilor
+    resultFinal = myAddWeighted(result, 0.6, result2, 0.4);
+    //aplicarea blurarii
+    blurred = myGaussianBlur(resultFinal,1.8);
+    return blurred;
 }

@@ -41,15 +41,15 @@ int main() {
     imshow("fisheye2 1.5",myFisheye2(image,1.5));
     imshow("fisheye2 2",myFisheye2(image,2));
     imshow("fisheye2 3",myFisheye2(image,3));
-    imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\fisheye_15.bmp",myFisheye2(image,1.5));
-    imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\fisheye_2.bmp",myFisheye2(image,2));
-    imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\fisheye_3.bmp",myFisheye2(image,3));
-    //imshow("fisheye 1",myFisheye(image,1));
-    //imshow("fisheye 1.5",myFisheye(image,1.5));
-    //imshow("fisheye 3",myFisheye(image,3));
+    //imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\fisheye_15.bmp",myFisheye2(image,1.5));
+    //imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\fisheye_2.bmp",myFisheye2(image,2));
+    //imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\fisheye_3.bmp",myFisheye2(image,3));
+    imshow("fisheye 1.5", enhancedFisheye(image,1.5));
+    imshow("fisheye 2",enhancedFisheye(image,2));
+    imshow("fisheye 3",enhancedFisheye(image,3));
     //imshow("fisheye2",myFisheye2(imageCity,3));
-    //imshow("fisheye",myFisheye(imageCity,3));
-
+    */        //imshow("fisheye",myFisheye(imageCity,3));
+/*
     imshow("tilt shift", tiltShift(imageCity,1.5, 400,500));
     imshow("tilt shift opencv", tiltShiftOpenCv(imageCity,1.5, 400,500));
     imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\tiltShift.bmp",tiltShift(imageCity,1.5, 400,500));
@@ -59,14 +59,17 @@ int main() {
     //pentru comparare folosesc PSNR, SSIM, and LPIPS
     //imshow("original city", imageCity2);
     //imshow("tilt shift",tiltShift(imageCity,1.2, 30,100));
+ */
+    //Mat myBokeh = bokehCerc(imageCity2);
+    //Mat onlineBokeh = bokehEffect(imageCity,10);
+    //imshow("bokeh 2",onlineBokeh);
+    //imshow("original",imageCity2);
+    //imshow("bokeh",myBokeh);
+    //imshow("new bokeh", newBokeh(imageCity2,0.7,15));
+    //imshow("enhenced", bokehImproved(imageCity2)); //poate reusesc ceva cu asta
+    //imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\bokeh.bmp",myBokeh);
+    //imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\bokeh_online.bmp",onlineBokeh);
 
-    Mat myBokeh = bokehCerc(imageCity);
-    Mat onlineBokeh = bokehEffect(imageCity,10);
-    imshow("bokeh 2",onlineBokeh);
-    imshow("bokeh",myBokeh);
-    imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\bokeh.bmp",myBokeh);
-    imwrite("D:\\An III sem II\\PI\\FilterProject\\results\\bokeh_online.bmp",onlineBokeh);
-    */
 
     waitKey(0);
     return 0;

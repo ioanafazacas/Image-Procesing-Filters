@@ -35,6 +35,8 @@ Mat myFisheye(Mat source, float k);
 
 Mat myFisheye2(Mat source, float k);
 
+Mat enhancedFisheye(Mat source, float strength);
+
 Mat tiltShift(Mat source, float sigma, int low, int high);
 
 Mat maskEffect(Mat mask, Mat source, Mat effect);
@@ -44,6 +46,9 @@ Mat bokehEffect(const Mat& input, int radius);
 labels BFS_labeling(Mat source);
 
 Mat bokehCerc(Mat source);
+
+Mat bokehImproved(Mat source);
+Mat newBokeh(Mat source, float intensity = 0.7f, int radius = 15);
 
 
 #endif //FILTERPROJECT_EFFECTS_H
